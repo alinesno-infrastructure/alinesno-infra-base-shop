@@ -1,0 +1,17 @@
+server:
+  port: 30117
+
+spring:
+  application:
+    name: demo-shop
+  data:
+    redis:
+      host: 127.0.0.1
+      port: 6379
+      password: aip@local
+
+alinesno.base:
+  shop:
+    env: development
+    kafkaServers: 192.168.101.18:9092
+    user-key: aip@local
