@@ -1,7 +1,7 @@
 {
   "name": "alinesno-infra-base-config-admin",
   "version": "1.0.0",
-  "description": "商城服务",
+  "description": "基础商城管理服务",
   "author": "LuoXiaoDong",
   "license": "Apache-2.0",
   "scripts": {
