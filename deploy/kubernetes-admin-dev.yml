@@ -62,5 +62,3 @@ spec:
                 name: ${PROJECT_NAME}
                 port:
                   number: 80
-
-
