@@ -11,7 +11,7 @@
 export default {
   data () {
     return {
-      currentApplicationName: '商城服务'
+      currentApplicationName: '基础商城管理服务'
     }
   },
   mounted () {

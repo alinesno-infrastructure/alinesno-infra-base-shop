@@ -436,7 +436,7 @@ const screenJsonList = [
         "prodStatus": "normal",
         "identityStatus": null,
         "tenantId": "0",
-        "name": "商城服务",
+        "name": "基础商城管理服务",
         "hasRecommend": 1,
         "applicationId": null,
         "shortName": null

@@ -78,5 +78,4 @@ jobs:
             export NAMESPACE=${{ secrets.K8S_NAMESPACE }}
 
             export INFRA_DEV_DOMAIN=${{ secrets.INFRA_BETA_BASE_DOMAIN }}
-
             envsubst < /home/github-action/${{ env.PROJECT_NAME }}/kubernetes-admin-${{ env.CURRENT_PROFIRE }}.yml | kubectl apply -f -

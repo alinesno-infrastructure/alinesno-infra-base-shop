@@ -129,7 +129,7 @@ const productList = [
                 "hasInner": 0,
                 "linkPath": "http://alinesno-gateway.beta.linesno.com",
                 "prodStatus": "normal",
-                "name": "商城服务",
+                "name": "基础商城管理服务",
                 "id": "053b9e440df2d3a2ddfc714b206c9731"
             },
             {

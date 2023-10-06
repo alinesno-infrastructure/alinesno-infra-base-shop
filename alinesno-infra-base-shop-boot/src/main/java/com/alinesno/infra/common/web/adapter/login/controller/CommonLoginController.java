@@ -1,8 +1,5 @@
 package com.alinesno.infra.common.web.adapter.login.controller;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONArray;
-import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alinesno.infra.common.facade.response.AjaxResult;
 import com.alinesno.infra.common.web.adapter.dto.LoginBodyDto;
 import com.alinesno.infra.common.web.adapter.dto.menus.Menu;
@@ -11,7 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 @RestController
 public class CommonLoginController {
@@ -131,38 +131,37 @@ public class CommonLoginController {
     {
 
         Menu dashboardMenu = new Menu("Dashboard", "/dashboard", false, "noRedirect", "Layout", true, new Menu.Meta("仪盘表", "dashboard", false, null), List.of(
-                new Menu("Dashboard", "index", false, false , "dashboard", new Menu.Meta("概览", "dashboard", false, null)),
-                new Menu("Dashboard", "index", false, false , "dashboard", new Menu.Meta("应用管理", "dashboard", false, null))
+                new Menu("Dashboard", "index", false, false , "dashboard", new Menu.Meta("概览", "dashboard", false, null))
         ));
 
         Menu systemMenu = new Menu("System", "/system", false, "noRedirect", "Layout", true, new Menu.Meta("商品管理", "post", false, null),
                 List.of(
                         new Menu("Tenant", "system/tenant/index", false,false,  "system/tenant/index", new Menu.Meta("商品列表", "tree", false, null)),
-                        new Menu("Tenant", "system/tenant/index", false,false,  "system/tenant/index", new Menu.Meta("添加商品", "tree", false, null)),
-                        new Menu("Tenant", "system/tenant/index", false,false,  "system/tenant/index", new Menu.Meta("商品分类", "tree", false, null)),
-                        new Menu("Tenant", "system/tenant/index", false,false,  "system/tenant/index", new Menu.Meta("商品类型", "tree", false, null)),
+                        new Menu("User", "system/user/index", false,false,  "system/user/index", new Menu.Meta("添加商品", "user", false, null)),
+                        new Menu("User", "system/user/index", false,false,  "system/user/index", new Menu.Meta("商品分类", "user", false, null)),
+                        new Menu("User", "system/user/index", false,false,  "system/user/index", new Menu.Meta("商品类型", "user", false, null)),
                         new Menu("User", "system/user/index", false,false,  "system/user/index", new Menu.Meta("品牌管理", "user", false, null))
                 ));
 
         Menu serviceMenu = new Menu("Log", "/log", false, "noRedirect", "Layout", true, new Menu.Meta("订单管理", "log", false, null),
                         List.of(
                                 new Menu("Operlog", "monitor/operlog/index", false,false, "monitor/operlog/index", new Menu.Meta("订单列表", "form", false, null)),
-                                new Menu("Operlog", "monitor/operlog/index", false,false, "monitor/operlog/index", new Menu.Meta("订单设置", "form", false, null)),
-                                new Menu("Operlog", "monitor/operlog/index", false,false, "monitor/operlog/index", new Menu.Meta("退货申请管理", "form", false, null)),
-                                new Menu("Logininfor", "monitor/logininfor/index", false,false, "monitor/logininfor/index", new Menu.Meta("退货原因设计", "logininfor", false, null))));
+                                new Menu("Logininfor", "monitor/logininfor/index", false,false, "monitor/logininfor/index", new Menu.Meta("订单设置", "logininfor", false, null)),
+                                new Menu("Logininfor", "monitor/logininfor/index", false,false, "monitor/logininfor/index", new Menu.Meta("退货申请", "logininfor", false, null)),
+                                new Menu("Logininfor", "monitor/logininfor/index", false,false, "monitor/logininfor/index", new Menu.Meta("退货原因", "logininfor", false, null))
+                 ));
 
-        Menu monitorMenu = new Menu("Monitor", "/monitor", false, "noRedirect", "Layout", true, new Menu.Meta("营销管理", "monitor", false, null),
+        Menu marketingMenu = new Menu("Log", "/log", false, "noRedirect", "Layout", true, new Menu.Meta("营销管理", "log", false, null),
                 List.of(
-                        new Menu("Online", "monitor/online/index", false,false, "monitor/online/index", new Menu.Meta("优惠卷列表", "online", false, null)),
-                        new Menu("Job", "monitor/job/index", false,false, "monitor/job/index", new Menu.Meta("品牌推荐", "job", false, null)),
-                        new Menu("Server", "monitor/server/index", false,false, "monitor/server/index", new Menu.Meta("新品推荐", "server", false, null)),
-                        new Menu("Server", "monitor/server/index", false,false, "monitor/server/index", new Menu.Meta("人气推荐", "server", false, null)),
-                        new Menu("Server", "monitor/server/index", false,false, "monitor/server/index", new Menu.Meta("专题推荐", "server", false, null)),
-                        new Menu("Cache", "monitor/cache/index", false,false, "monitor/cache/index", new Menu.Meta("专题推荐", "redis", false, null))
+                        new Menu("Operlog", "monitor/operlog/index", false,false, "monitor/operlog/index", new Menu.Meta("优惠卷管理", "form", false, null)),
+                        new Menu("Logininfor", "monitor/logininfor/index", false,false, "monitor/logininfor/index", new Menu.Meta("品牌推荐", "logininfor", false, null)),
+                        new Menu("Logininfor", "monitor/logininfor/index", false,false, "monitor/logininfor/index", new Menu.Meta("新品推荐", "logininfor", false, null)),
+                        new Menu("Logininfor", "monitor/logininfor/index", false,false, "monitor/logininfor/index", new Menu.Meta("人气推荐", "logininfor", false, null)),
+                        new Menu("Logininfor", "monitor/logininfor/index", false,false, "monitor/logininfor/index", new Menu.Meta("专题推荐", "logininfor", false, null)),
+                        new Menu("Logininfor", "monitor/logininfor/index", false,false, "monitor/logininfor/index", new Menu.Meta("广告列表", "logininfor", false, null))
                 ));
 
-
-        List<Menu> menus = List.of(dashboardMenu , systemMenu, serviceMenu , monitorMenu);
+        List<Menu> menus = List.of(dashboardMenu , systemMenu, serviceMenu , marketingMenu) ;
 
         return AjaxResult.success(menus) ;
     }
